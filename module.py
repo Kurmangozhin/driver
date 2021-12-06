@@ -18,7 +18,7 @@ class Driver(object):
         return class_labels    
     
     def predictions_classes(self, input_image:str):
-        image = cv2.imread(input_image)
+        image = cv2.imread(input_image, cv2.IMREAD_COLOR)
         img_blob = cv2.dnn.blobFromImage(image, 1/255., (224,224), swapRB=True, crop=False)
         self.net.setInput(img_blob)
         output = self.net.forward(self.layer)
